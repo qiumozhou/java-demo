@@ -5,8 +5,7 @@ import com.example.demo.model.User;
 import common.utils.JsonResult;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 
 @RestController
@@ -27,16 +26,19 @@ public class HelloController {
      * @param request
      * @return
      */
-    @GetMapping("/get")
+    @GetMapping("/user")
     public JsonResult<User> test(){
         User user  = new User("aaa",18);
-        System.out.println("11111111");
         return new JsonResult<>(user);
     }
 
-    @GetMapping("/user")
-    public User getUserList(){
-        User user = new User("aa",1);
-        return user;
+    @GetMapping("/userList")
+    public JsonResult<ArrayList> getUserList(){
+        User user1 = new User("aa",1);
+        User user2 = new User("bb",2);
+        ArrayList<User> arr = new ArrayList<User>();
+        arr.add(user1);
+        arr.add(user2);
+        return new JsonResult<>(arr);
     }
 }
