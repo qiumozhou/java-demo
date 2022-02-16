@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.User;
+import common.utils.JsonResult;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 @RestController
 @EnableAutoConfiguration
@@ -16,10 +18,8 @@ public class HelloController {
     }
 
     @PostMapping("/post")
-    public String index(@RequestBody User user){
-        System.out.println("user name is:"+user.getName());
-        System.out.println("user age is:"+user.getAge());
-        return "Hello "+user.getName();
+    public JsonResult<User> index(@RequestBody User user){
+        return new JsonResult<>();
     }
 
     /**
@@ -28,10 +28,15 @@ public class HelloController {
      * @return
      */
     @GetMapping("/get")
-    public String test(HttpServletRequest request){
-        String username = request.getParameter("username");
-        System.out.println("username is:"+username);
-        return "Hello "+username;
+    public JsonResult<User> test(){
+        User user  = new User("aaa",18);
+        System.out.println("11111111");
+        return new JsonResult<>(user);
     }
 
+    @GetMapping("/user")
+    public User getUserList(){
+        User user = new User("aa",1);
+        return user;
+    }
 }
