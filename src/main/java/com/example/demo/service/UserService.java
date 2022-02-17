@@ -2,9 +2,12 @@ package com.example.demo.service;
 
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserExample;
 import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -19,5 +22,9 @@ public class UserService {
     UserMapper userMapper;
     public User getUserByID(int key){
         return userMapper.selectByPrimaryKey(key);
+    }
+
+    public List<User> getUserList(UserExample example){
+        return userMapper.selectByExample(example);
     }
 }
