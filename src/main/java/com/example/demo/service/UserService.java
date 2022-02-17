@@ -1,7 +1,11 @@
 package com.example.demo.service;
 
+
+import com.example.demo.entity.User;
+import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  * @author qiumozhou
@@ -13,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-    public User selectByPrimaryKey(UserKey key){
+    public User getUserByID(int key){
         return userMapper.selectByPrimaryKey(key);
     }
 }

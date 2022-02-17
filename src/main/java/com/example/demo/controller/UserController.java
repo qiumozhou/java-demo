@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -19,10 +20,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("getUser/{id}")
-    public User GetUser(@PathVariable String id){
-        System.out.println("111111:"+id);
-        UserKey userKey = new UserKey(id);
-        return userService.selectByPrimaryKey(userKey);
+    @RequestMapping("/getUser/{id}")
+    public User GetUser(@PathVariable int id){
+        return userService.getUserByID(id);
     }
 }
