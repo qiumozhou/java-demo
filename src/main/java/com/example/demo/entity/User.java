@@ -1,16 +1,13 @@
 package com.example.demo.entity;
 
-/**
- * @author qiumozhou
- * @version 1.0
- * @email 15717163552@163.com
- * @date 2022/2/16 上午11:46
- */
 public class User {
     private Integer id;
-    private String userName;
-    private String passWord;
-    private String realName;
+
+    private String username;
+
+    private String password;
+
+    private String realname;
 
     public Integer getId() {
         return id;
@@ -20,37 +17,27 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public String getRealName() {
-        return realName;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", realName='" + realName + '\'' +
-                '}';
+    public void setRealname(String realname) {
+        this.realname = realname == null ? null : realname.trim();
     }
 }

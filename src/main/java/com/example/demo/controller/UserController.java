@@ -20,8 +20,9 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("getUser/{id}")
-    public String GetUser(@PathVariable int id){
+    public User GetUser(@PathVariable String id){
         System.out.println("111111:"+id);
-        return userService.Sel(id).toString();
+        UserKey userKey = new UserKey(id);
+        return userService.selectByPrimaryKey(userKey);
     }
 }
