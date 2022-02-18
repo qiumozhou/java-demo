@@ -24,8 +24,8 @@ public class UserService {
         return userMapper.selectByPrimaryKey(key);
     }
 
-    public List<User> getUserList(UserExample example){
-        return userMapper.selectByExample(example);
+    public List<User> getUserList(){
+        return userMapper.selectPage();
     }
 
     public int updateUser(User user){
@@ -39,4 +39,9 @@ public class UserService {
     public int deleteUser(int id){
         return userMapper.deleteByPrimaryKey(id);
     }
+
+    public long getCount(UserExample example){
+        return userMapper.countByExample(example);
+    }
+
 }

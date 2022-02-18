@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserExample;
 import com.example.demo.service.UserService;
+import com.github.pagehelper.PageHelper;
 import common.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -29,10 +30,12 @@ public class UserController {
     }
 
     @GetMapping("/getUserList")
-    public JsonResult<List<User>> GetUserList(){
-        UserExample userExample = new UserExample();
-        List<User>  userList = userService.getUserList(userExample);
-        return new JsonResult<>(userList);
+    public JsonResult<List<User>> GetUserList(@RequestParam int page,int size){
+        PageHelper.startPage(page, size);
+        List<User>  userList = userService.getUserList();
+        UserExample user = new UserExample();
+        Long count = userService.getCount(user);
+        return new JsonResult<>(userList,count);
     }
 
     @PutMapping("/updateUser")

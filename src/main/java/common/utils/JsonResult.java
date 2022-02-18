@@ -4,6 +4,7 @@ public class JsonResult<T> {
     private T data;
     private String code;
     private String msg;
+    private Long count;
 
     /**
      * 若没有数据返回，默认状态码为 0，提示信息为“操作成功！”
@@ -22,6 +23,14 @@ public class JsonResult<T> {
         this.code = code;
         this.msg = msg;
 
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     /**
@@ -48,6 +57,13 @@ public class JsonResult<T> {
         this.data = data;
         this.code = "0";
         this.msg = "操作成功！";
+    }
+
+    public JsonResult(T data,Long count) {
+        this.data = data;
+        this.code = "0";
+        this.msg = "操作成功！";
+        this.count = count;
     }
 
     /**
