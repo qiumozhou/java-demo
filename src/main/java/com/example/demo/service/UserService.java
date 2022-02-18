@@ -27,4 +27,16 @@ public class UserService {
     public List<User> getUserList(UserExample example){
         return userMapper.selectByExample(example);
     }
+
+    public int updateUser(User user){
+        return userMapper.updateByPrimaryKey(user);
+    }
+
+    public int addUser(User user){
+        return userMapper.insert(user);
+    }
+
+    public int deleteUser(int id){
+        return userMapper.deleteByPrimaryKey(id);
+    }
 }

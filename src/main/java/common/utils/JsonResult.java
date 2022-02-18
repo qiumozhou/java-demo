@@ -21,6 +21,23 @@ public class JsonResult<T> {
     public JsonResult(String code, String msg) {
         this.code = code;
         this.msg = msg;
+
+    }
+
+    /**
+     * 若没有数据返回，可以人为指定状态码和提示信息
+     * @param code
+     * @param msg
+     */
+    public JsonResult(String code) {
+        if(code.equals("1")){
+            this.code = "0";
+            this.msg = "操作成功";
+        }else{
+            this.code = "1";
+            this.msg = "操作失败";
+        }
+
     }
 
     /**

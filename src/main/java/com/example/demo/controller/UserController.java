@@ -6,10 +6,7 @@ import com.example.demo.service.UserService;
 import common.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +33,23 @@ public class UserController {
         UserExample userExample = new UserExample();
         List<User>  userList = userService.getUserList(userExample);
         return new JsonResult<>(userList);
+    }
+
+    @PutMapping("/updateUser")
+    public JsonResult UpdateUser(@RequestBody User user){
+        int result =  userService.updateUser(user);
+        return new JsonResult<>(String.valueOf(result));
+        }
+
+    @PostMapping("/addUser")
+    public JsonResult AddUser(@RequestBody User user){
+        int result =  userService.addUser(user);
+        return new JsonResult<>(String.valueOf(result));
+        }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public JsonResult DeleteUser(@PathVariable int id){
+        int result =  userService.deleteUser(id);
+        return new JsonResult<>(result);
     }
 }
