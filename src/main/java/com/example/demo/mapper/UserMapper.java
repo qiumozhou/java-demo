@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -32,4 +33,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     List<User> selectPage();
+
+    List<User> searchUser(int page,int limit,String username);
+
+    Long getUserCountBySearch(String username);
 }

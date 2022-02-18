@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+import java.util.HashMap;
 import java.util.List;
+
 
 /**
  * @author qiumozhou
@@ -54,5 +57,14 @@ public class UserController {
     public JsonResult DeleteUser(@PathVariable int id){
         int result =  userService.deleteUser(id);
         return new JsonResult<>(result);
+    }
+
+    @GetMapping("/searchUser")
+    public JsonResult SearchUser(@RequestParam String uname,int page,int limit){
+        uname = "%"+uname+"%";
+        List<User> userList = userService.searchUser(page,limit,uname);
+        Long userCount = userService.getUserCountBySearch(uname);
+        return new JsonResult<>(userList,userCount);
+
     }
 }

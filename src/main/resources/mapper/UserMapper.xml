@@ -199,4 +199,16 @@
     <include refid="Base_Column_List" />
     from user
   </select>
+
+  <select id="searchUser" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from user where userName like #{username} limit #{page},#{limit}
+  </select>
+
+  <select id="getUserCountBySearch" resultType="java.lang.Long" parameterType="java.util.HashMap">
+    select count(*) from user where userName like #{username}
+  </select>
+
+
 </mapper>

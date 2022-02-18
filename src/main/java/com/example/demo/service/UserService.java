@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -42,6 +43,14 @@ public class UserService {
 
     public long getCount(UserExample example){
         return userMapper.countByExample(example);
+    }
+
+    public List<User> searchUser(int page,int limit,String username){
+        return userMapper.searchUser(page,limit,username);
+    }
+
+    public Long getUserCountBySearch(String username){
+        return userMapper.getUserCountBySearch(username);
     }
 
 }
