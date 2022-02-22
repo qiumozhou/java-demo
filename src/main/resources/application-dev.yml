@@ -6,11 +6,26 @@ server:
 spring:
   main:
     allow-circular-references: true
+  #mysql相关配置
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/java?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+  #Redis服务器IP地址
+    host: 127.0.0.1
+  #Redis服务器端口号
+    port: 6379
+  #Redis服务器最大活跃数
+    jedis.pool.max-active: 20
+  #Redis服务器最大空闲数
+    jedis.pool.max-idle: 8
+  #Redis服务器最小空闲数
+    jedis.pool.min-idle: 0
+  #Redis服务器链接最大超时20000
+    jedis.pool.max-wait: 20000
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
@@ -21,3 +36,5 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+

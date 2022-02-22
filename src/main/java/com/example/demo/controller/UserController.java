@@ -28,6 +28,7 @@ public class UserController {
     @GetMapping("/getUser/{id}")
     public JsonResult<User> GetUser(@PathVariable int id){
         User user = userService.getUserByID(id);
+
         return new JsonResult<>(user);
     }
 
