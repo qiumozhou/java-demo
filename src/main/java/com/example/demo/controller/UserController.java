@@ -35,7 +35,7 @@ public class UserController {
     @GetMapping("/getUserList")
     public JsonResult<List<User>> GetUserList(@RequestParam int page,int size){
         PageHelper.startPage(page, size);
-        List<User>  userList = userService.getUserList();
+        List<User>  userList = userService.getUserList(page,size);
         UserExample user = new UserExample();
         Long count = userService.getCount(user);
         return new JsonResult<>(userList,count);
